@@ -2,6 +2,22 @@
 
 Displays ANSI colors on the terminal.
 
+Show standard 4-bit colors.
+
+![](content/tcolor-standard.png)
+
+Show extended 8-bit colors (partial output).
+
+![](content/tcolor-extended.png)
+
+Show specific 8-bit color.
+
+![](content/tcolor-color.png)
+
+Show RGB color.
+
+![](content/tcolor-rgb.png)
+
 ## Install
 
 ### Install from Homebrew
