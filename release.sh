@@ -6,10 +6,11 @@ if [[ -z $(which gh) ]]; then
 fi
 
 function build() {
+    local __PROG="tcolor"
     local __ARCH="$1"
     local __TARGET="${__ARCH}-apple-darwin"
     local __BIN_DIR="$(pwd)/target/${__TARGET}/release"
-    local __BIN="$__BIN_DIR/tcolor"
+    local __BIN="$__BIN_DIR/$__PROG"
 
     echo "$__TARGET: building target"
     cargo build --release --target=${__TARGET}
@@ -18,7 +19,7 @@ function build() {
         exit 1
     fi
 
-    __TAR="$__BIN_DIR/tcolor-${__VERSION}-${__ARCH}-unix.tar.gz"
+    __TAR="$__BIN_DIR/$__PROG-${__VERSION}-${__ARCH}-unix.tar.gz"
     tar -czf "$__TAR" -C "$__BIN_DIR" keyb
     shasum -a 256 "$__TAR" > "$__TAR.sha256"
 }
