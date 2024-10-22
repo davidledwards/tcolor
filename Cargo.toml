@@ -1,0 +1,12 @@
+[package]
+name = "tcolor"
+version = "0.1.0"
+edition = "2021"
+authors = ["David Edwards <david.l.edwards@gmail.com>"]
+description = "Displays ANSI colors on the terminal"
+readme = "README.md"
+homepage = "https://github.com/davidledwards/tcolor"
+repository = "https://github.com/davidledwards/tcolor"
+license = "Apache-2.0"
+keywords = ["color", "terminal", "ansi"]
+categories = ["command-line-utilities"]
