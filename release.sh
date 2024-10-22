@@ -20,7 +20,7 @@ function build() {
     fi
 
     __TAR="$__BIN_DIR/$__PROG-${__VERSION}-${__ARCH}-unix.tar.gz"
-    tar -czf "$__TAR" -C "$__BIN_DIR" keyb
+    tar -czf "$__TAR" -C "$__BIN_DIR" "$__PROG"
     shasum -a 256 "$__TAR" > "$__TAR.sha256"
 }
 
