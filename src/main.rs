@@ -1,5 +1,3 @@
-//! # tcolor
-//!
 //! Displays ANSI colors on the terminal.
 //!
 //! Copyright 2024 David Edwards
@@ -21,11 +19,10 @@ mod opt;
 
 use crate::error::Result;
 use crate::opt::Options;
-
 use std::process::ExitCode;
 
 /// Usage documentation for display to terminal.
-const USAGE: &str = include_str!("usage.in");
+const USAGE: &str = include_str!("include/usage.in");
 
 // Version and build information.
 const PACKAGE_NAME: &str = env!("CARGO_PKG_NAME");
@@ -57,14 +54,20 @@ fn run() -> Result<()> {
 }
 
 fn run_opts(opts: &Options) {
-    const BLANKS: &str = "                ";
+    const BLANKS: &str = "                               ";
 
     if let Some(rgb) = opts.rgb {
         let (r, g, b) = rgb;
         println!(
-            "{}rgb {r},{g},{b} {}{BLANKS}{}",
-            ansi::set_fg_rgb(rgb),
+            "rgb({r},{g},{b}) {}{BLANKS}{}",
             ansi::set_bg_rgb(rgb),
+            ansi::reset(),
+        );
+    } else if let Some(blend) = opts.blend {
+        let (fg, bg) = blend;
+        println!(
+            "{}  foreground: {fg}, background: {bg}  {}",
+            ansi::set_color(fg, bg),
             ansi::reset()
         );
     } else {
@@ -75,11 +78,9 @@ fn run_opts(opts: &Options) {
         } else {
             0..=255
         };
-
         for color in colors {
             println!(
-                "{}color {color:<3} {}{BLANKS}{}",
-                ansi::set_fg(color),
+                "{color:<3} {}{BLANKS}{}",
                 ansi::set_bg(color),
                 ansi::reset()
             );

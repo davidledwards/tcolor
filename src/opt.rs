@@ -23,6 +23,7 @@ pub struct Options {
     pub extended: bool,
     pub color: Option<u8>,
     pub rgb: Option<(u8, u8, u8)>,
+    pub blend: Option<(u8, u8)>,
 }
 
 impl Default for Options {
@@ -34,6 +35,7 @@ impl Default for Options {
             extended: true,
             color: None,
             rgb: None,
+            blend: None,
         }
     }
 }
@@ -58,6 +60,10 @@ impl Options {
                         parse_color(&arg, it.next())?,
                         parse_color(&arg, it.next())?,
                     ))
+                }
+                "--blend" | "-b" => {
+                    opts.blend =
+                        Some((parse_color(&arg, it.next())?, parse_color(&arg, it.next())?))
                 }
                 _ => return Err(Error::UnexpectedArg(arg)),
             };

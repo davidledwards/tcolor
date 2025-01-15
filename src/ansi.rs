@@ -16,17 +16,12 @@
 
 const CSI: &str = "\x1b[";
 
-pub fn set_fg(color: u8) -> String {
-    format!("{CSI}38;5;{color}m")
+pub fn set_color(fg: u8, bg: u8) -> String {
+    format!("{CSI}38;5;{fg}m{CSI}48;5;{bg}m")
 }
 
 pub fn set_bg(color: u8) -> String {
     format!("{CSI}48;5;{color}m")
-}
-
-pub fn set_fg_rgb(rgb: (u8, u8, u8)) -> String {
-    let (r, g, b) = rgb;
-    format!("{CSI}38;2;{r};{g};{b}m")
 }
 
 pub fn set_bg_rgb(rgb: (u8, u8, u8)) -> String {

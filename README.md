@@ -18,6 +18,10 @@ Show RGB color.
 
 ![](content/tcolor-rgb.png)
 
+Show blended foreground and background 8-bit colors.
+
+![](content/tcolor-blend.png)
+
 ## Install
 
 ### Install from Homebrew
@@ -31,37 +35,15 @@ brew install tcolor
 
 Releases can be downloaded directly from [GitHub](https://github.com/davidledwards/tcolor/releases).
 
-Alternatively, using the [GitHub CLI](https://cli.github.com/), releases can also be downloaded from the command line. For example, to download version `0.1.0`, run the following command.
+Alternatively, using the [GitHub CLI](https://cli.github.com/), releases can also be downloaded from the command line. For example, to download version `0.2.0`, run the following command.
 
 ```shell
-gh release download --repo https://github.com/davidledwards/tcolor v0.1.0
+gh release download --repo https://github.com/davidledwards/tcolor v0.2.0
 ```
 
 ## Usage
 
 `tcolor` is quite simple. Use `--help` to print a description of all available options.
-
-## Build
-
-Install [Rust](https://www.rust-lang.org/tools/install) if not done so already.
-
-In the root directory of `tcolor`, run either of the folowing commands to build the project.
-
-```shell
-cargo build     # debug build
-cargo build -r  # release build
-```
-
-Running the program can be done via `cargo` or directly using the target executable.
-
-```shell
-cargo run [-r] -- [options to tcolor go here]
-```
-
-```shell
-target/debug/tcolor [options]
-target/release/tcolor [options]
-```
 
 ## Release
 
