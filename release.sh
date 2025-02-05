@@ -6,17 +6,15 @@ if [[ -z $(which gh) ]]; then
 fi
 
 function build() {
-    local __PROG="tcolor"
     local __ARCH="$1"
     local __TARGET="${__ARCH}-apple-darwin"
     local __BIN_DIR="$(pwd)/target/${__TARGET}/release"
     local __BIN="$__BIN_DIR/$__PROG"
 
     echo "$__TARGET: building target"
-    cargo test --release
     cargo build --release --target=${__TARGET}
     if [ $? -ne 0 ]; then
-        echo "$__BIN: build failure"
+        echo "$__BIN: build failed"
         exit 1
     fi
 
@@ -25,9 +23,11 @@ function build() {
     shasum -a 256 "$__TAR" > "$__TAR.sha256"
 }
 
-echo "detecting version"
-__VERSION=$(cargo run --release -- --version | cut -d " " -f 2)
+__VERSION=$(cargo metadata --no-deps --format-version 1 | jq -r ".packages[0].version")
+echo "${__VERSION}: version detected"
 
+cargo clean
+__PROG="tcolor"
 __TARGETS=("aarch64" "x86_64")
 __FILES=()
 for __TARGET in "${__TARGETS[@]}"
@@ -41,4 +41,5 @@ if [ $? -eq 0 ]; then
     echo "$__VERSION: release successful"
 else
     echo "$__VERSION: release failed"
+    exit 1
 fi

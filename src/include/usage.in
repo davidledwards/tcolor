@@ -1,17 +1,19 @@
-usage: tcolor OPTIONS
-       tcolor --help
-       tcolor --version
+Displays ANSI colors on the terminal.
 
-  Displays ANSI colors on the terminal.
+USAGE
+  tcolor OPTIONS
+  tcolor --help
 
   If no options are provided, all 8-bit colors are shown as if --extended were
   specified.
 
-  OPTIONS
-    --standard, -s      : display original 4-bit colors in range 0-15
-    --extended, -e      : display extended 8-bit colors in range 0-255
-    --color, -c COLOR   : display color in range 0-255
-    --rgb, -r R G B     : display color using RGB, where each of R/G/B in
-                          range 0-255
-    --blend, -b FG BG   : display blended foreground and background colors
-                          where FG and BG are 8-bit colors in range 0-255
+OPTIONS
+  --standard, -s      : display original 4-bit colors in range 0-15
+  --extended, -e      : display extended 8-bit colors in range 0-255
+  --color, -c COLOR   : display color in range 0-255
+  --rgb, -r R G B     : display color using RGB, where each of R/G/B in
+                        range 0-255
+  --blend, -b FG BG   : display blended foreground and background colors
+                        where FG and BG are 8-bit colors in range 0-255
+  --help, -h          : print this help
+  --version, -v       : print version information

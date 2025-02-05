@@ -49,8 +49,6 @@ impl Options {
         let mut it = args.into_iter();
         while let Some(arg) = it.next() {
             match arg.as_str() {
-                "--help" => opts.help = true,
-                "--version" => opts.version = true,
                 "--standard" | "-s" => opts.standard = true,
                 "--extended" | "-e" => opts.extended = true,
                 "--color" | "-c" => opts.color = Some(parse_color(&arg, it.next())?),
@@ -65,6 +63,8 @@ impl Options {
                     opts.blend =
                         Some((parse_color(&arg, it.next())?, parse_color(&arg, it.next())?))
                 }
+                "--help" | "-h" => opts.help = true,
+                "--version" | "-v" => opts.version = true,
                 _ => return Err(Error::UnexpectedArg(arg)),
             };
         }
