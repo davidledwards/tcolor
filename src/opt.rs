@@ -17,25 +17,25 @@
 use crate::error::{Error, Result};
 
 pub struct Options {
-    pub help: bool,
-    pub version: bool,
     pub standard: bool,
     pub extended: bool,
     pub color: Option<u8>,
     pub rgb: Option<(u8, u8, u8)>,
     pub blend: Option<(u8, u8)>,
+    pub help: bool,
+    pub version: bool,
 }
 
 impl Default for Options {
     fn default() -> Options {
         Options {
-            help: false,
-            version: false,
             standard: false,
             extended: true,
             color: None,
             rgb: None,
             blend: None,
+            help: false,
+            version: false,
         }
     }
 }

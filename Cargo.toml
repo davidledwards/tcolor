@@ -1,6 +1,6 @@
 [package]
 name = "tcolor"
-version = "0.2.1"
+version = "0.3.0"
 edition = "2021"
 authors = ["David Edwards <david.l.edwards@gmail.com>"]
 description = "Displays ANSI colors on the terminal"
